@@ -17,7 +17,7 @@ class DeviationResource(resources.ModelResource):
 
 class DeviationAdmin(ImportExportModelAdmin):
     resource_class = DeviationResource
-    list_display = ('region', 'objectid', 'productid')
+    list_display = ('index', 'region', 'objectid', 'productid')
     empty_value_display = '-пусто-'
 
 
