@@ -11,13 +11,13 @@ class DeviationResource(resources.ModelResource):
         model = Deviation
         fields = ('id', 'shiftnumber', 'region', 'objectid', 'version',
                   'shiftbegt', 'shiftendt', 'attrval_start_weight',
-                  'attrval_end_weight', 'acceptance_sum', 'index', 'productid',
+                  'attrval_end_weight', 'acceptance_sum', 'productid',
                   'shipment_sum')
 
 
 class DeviationAdmin(ImportExportModelAdmin):
     resource_class = DeviationResource
-    list_display = ('index', 'region', 'objectid', 'productid')
+    list_display = ('id', 'region', 'objectid', 'productid')
     empty_value_display = '-пусто-'
 
 

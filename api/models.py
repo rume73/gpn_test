@@ -33,11 +33,6 @@ class Deviation(models.Model):
         'Версия пакета выгрузки по рабочей смене',
         validators=[validate_positive],
         )
-    index = models.PositiveSmallIntegerField(
-        'Индекс',
-        validators=[validate_positive],
-        unique=True
-        )
 
     class Meta:
         verbose_name = 'Отклонение'

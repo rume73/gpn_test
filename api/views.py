@@ -1,6 +1,5 @@
 import pandas as pd
 
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters, generics, status
 from rest_framework.response import Response
@@ -11,7 +10,7 @@ from .serializers import DeviationSerializer, FileUploadSerializer
 
 class UploadFileView(generics.CreateAPIView):
     serializer_class = FileUploadSerializer
-    
+
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -20,15 +19,14 @@ class UploadFileView(generics.CreateAPIView):
         for _, row in reader.iterrows():
             new_file = Deviation(
                     shiftnumber=row['shiftnumber'],
-                    region=row['region'], 
-                    objectid=row['objectid'], 
-                    version=row['version'], 
+                    region=row['region'],
+                    objectid=row['objectid'],
+                    version=row['version'],
                     shiftbegt=row['shiftbegt'],
                     shiftendt=row['shiftendt'],
                     attrval_start_weight=row['attrval__start_weight'],
                     attrval_end_weight=row['attrval__end_weight'],
                     acceptance_sum=row['acceptance_sum'],
-                    index=row['index'],
                     productid=row['productid'],
                     shipment_sum=row['shipment_sum'],
                     )
@@ -46,6 +44,6 @@ class DeviationViewSet(viewsets.ModelViewSet):
         )
     filterset_fields = ('region', 'objectid', 'productid')
     search_fields = ('shiftnumber', 'region', 'objectid', 'version',
-                     'shiftbegt','shiftendt', 'attrval_start_weight',
-                     'attrval_end_weight', 'acceptance_sum', 'index',
-                     'productid', 'shipment_sum',)
+                     'shiftbegt', 'shiftendt', 'attrval_start_weight',
+                     'attrval_end_weight', 'acceptance_sum', 'productid',
+                     'shipment_sum',)

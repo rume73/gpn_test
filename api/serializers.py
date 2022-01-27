@@ -12,10 +12,10 @@ class DeviationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Deviation
-        fields = ('id', 'shiftnumber', 'region', 'objectid', 'version',
-                  'shiftbegt','shiftendt', 'attrval_start_weight',
-                  'attrval_end_weight', 'acceptance_sum', 'index', 'productid',
-                  'shipment_sum', 'deviation')
+        fields = ('id', 'region', 'objectid', 'productid', 'shiftnumber',
+                  'shiftbegt', 'shiftendt', 'acceptance_sum', 'shipment_sum',
+                  'attrval_start_weight', 'attrval_end_weight', 'version',
+                  'deviation')
 
     def get_deviation(self, obj):
         return (obj.attrval_start_weight + obj.shipment_sum
